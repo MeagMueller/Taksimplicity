@@ -32,6 +32,7 @@ const performances = {
         let newPerformanceDate = document.createElement("input")
         newPerformanceDate.setAttribute = ("type", "date")
         newPerformanceDate.setAttribute = ("id", "newPerformanceDate")
+        newPerformanceDate.placeholder = "mm/dd/yyyy"
         newPerformanceFragment.appendChild(newPerformanceDate)
 
         let paidPerformanceLabel = document.createElement("label")
