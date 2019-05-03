@@ -25,6 +25,37 @@ const performances = {
         newPerformanceLocationInput.placeholder = "Address"
         newPerformanceFragment.appendChild(newPerformanceLocationInput)
 
+        let newPerformanceDateLabel = document.createElement("label")
+        newPerformanceDateLabel.textContent = "Date: "
+        newPerformanceFragment.appendChild(newPerformanceDateLabel)
+
+        let newPerformanceDate = document.createElement("input")
+        newPerformanceDate.setAttribute = ("type", "date")
+        newPerformanceDate.setAttribute = ("id", "newPerformanceDate")
+        newPerformanceFragment.appendChild(newPerformanceDate)
+
+        let paidPerformanceLabel = document.createElement("label")
+        paidPerformanceLabel.textContent = "Paid? "
+        newPerformanceFragment.appendChild(paidPerformanceLabel)
+
+        let newPerformancePaidYesLabel = document.createElement("label")
+        newPerformancePaidYesLabel.textContent = "Yes "
+        newPerformanceFragment.appendChild(newPerformancePaidYesLabel)
+
+        let newPerformancePaidYesCheckbox = document.createElement("input")
+        newPerformancePaidYesCheckbox.setAttribute("type", "checkbox")
+        newPerformancePaidYesCheckbox.setAttribute("id", "paid")
+        newPerformanceFragment.appendChild(newPerformancePaidYesCheckbox)
+
+        let newPerformancePaidNoLabel = document.createElement("label")
+        newPerformancePaidNoLabel.textContent = "No "
+        newPerformanceFragment.appendChild(newPerformancePaidNoLabel)
+
+        let newPerformancePaidNoCheckbox = document.createElement("input")
+        newPerformancePaidNoCheckbox.setAttribute("type", "checkbox")
+        newPerformancePaidNoCheckbox.setAttribute("id", "unpaid")
+        newPerformanceFragment.appendChild(newPerformancePaidNoCheckbox)
+
 
         displayContainer.appendChild(newPerformanceFragment)
 
