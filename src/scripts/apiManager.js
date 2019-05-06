@@ -1,3 +1,5 @@
+import performanceHandlers from "./performances/performancesHandlers"
+
 const url = "http://localhost:8088"
 
 const fetchCalls = {
@@ -5,14 +7,22 @@ const fetchCalls = {
         return fetch(`${url}/performances`).then(response => response.json())
     },
 
-    postPerformances() {
+    postPerformances(newPerformance) {
         return fetch(`${url}/performances`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify()
+            body: JSON.stringify(newPerformance)
         }).then(response => response.json())
         
+    },
+
+    deletePerformances(performanceId) {
+        return fetch(`${url}/performances/${performanceId}`, {
+            method: "DELETE"
+        })
     }
 }
+
+export default fetchCalls

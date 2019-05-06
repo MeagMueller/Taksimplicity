@@ -1,10 +1,11 @@
 import fetchCalls from "../apiManager"
+import performanceHandlers from "../performances/performancesHandlers"
 
 const displayContainer = document.querySelector("#display-container")
 
 const performances = {
     createNewPerformance() {
-
+        // creating form
         let newPerformanceFragment = document.createDocumentFragment()
 
         let newPerformanceLabel = document.createElement("label")
@@ -12,7 +13,7 @@ const performances = {
         newPerformanceFragment.appendChild(newPerformanceLabel)
 
         let newPerformanceInput = document.createElement("input")
-        newPerformanceInput.setAttribute = ("id", "newPerformanceInput")
+        newPerformanceInput.setAttribute("id", "newPerformanceInput")
         newPerformanceInput.placeholder = "Name"
         newPerformanceFragment.appendChild(newPerformanceInput)
 
@@ -21,7 +22,7 @@ const performances = {
         newPerformanceFragment.appendChild(newPerformanceLocationLabel)
 
         let newPerformanceLocationInput = document.createElement("input")
-        newPerformanceLocationInput.setAttribute = ("id", "newPerformanceLabelInput")
+        newPerformanceLocationInput.setAttribute("id", "newPerformanceLocationInput")
         newPerformanceLocationInput.placeholder = "Address"
         newPerformanceFragment.appendChild(newPerformanceLocationInput)
 
@@ -30,9 +31,9 @@ const performances = {
         newPerformanceFragment.appendChild(newPerformanceDateLabel)
 
         let newPerformanceDate = document.createElement("input")
-        newPerformanceDate.setAttribute = ("type", "date")
-        newPerformanceDate.setAttribute = ("id", "newPerformanceDate")
-        newPerformanceDate.placeholder = "mm/dd/yyyy"
+        newPerformanceDate.setAttribute("type", "date")
+        newPerformanceDate.setAttribute("id", "newPerformanceDate")
+        // newPerformanceDate.placeholder = "mm/dd/yyyy"
         newPerformanceFragment.appendChild(newPerformanceDate)
 
         let paidPerformanceLabel = document.createElement("label")
@@ -48,15 +49,14 @@ const performances = {
         newPerformancePaidYesCheckbox.setAttribute("id", "paid")
         newPerformanceFragment.appendChild(newPerformancePaidYesCheckbox)
 
-        let newPerformancePaidNoLabel = document.createElement("label")
-        newPerformancePaidNoLabel.textContent = "No "
-        newPerformanceFragment.appendChild(newPerformancePaidNoLabel)
+        // creating save button
 
-        let newPerformancePaidNoCheckbox = document.createElement("input")
-        newPerformancePaidNoCheckbox.setAttribute("type", "checkbox")
-        newPerformancePaidNoCheckbox.setAttribute("id", "unpaid")
-        newPerformanceFragment.appendChild(newPerformancePaidNoCheckbox)
-
+        let saveNewPerformanceButton = document.createElement("button")
+        saveNewPerformanceButton.setAttribute("id", "saveNewPerformanceButton")
+        saveNewPerformanceButton.textContent = "Save Performance"
+        newPerformanceFragment.appendChild(saveNewPerformanceButton)
+        // add save event handler
+        saveNewPerformanceButton.addEventListener("click", performanceHandlers.saveNewPerformance)
 
         displayContainer.appendChild(newPerformanceFragment)
 
