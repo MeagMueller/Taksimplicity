@@ -1,6 +1,7 @@
 import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import listPerformances from "../performances/performanceList"
+import elementBuilders from "../domManager"
 
 const performanceHandlers = {
     saveNewPerformance() {
@@ -39,6 +40,26 @@ const performanceHandlers = {
 
         fetchCalls.deletePerformances(performanceId)
         .then(() => listPerformances.listAllPerformances())
+    },
+
+    editPerformanceHandler() {
+        console.log("Edit button clicked", event.target.id.split("_")[1])
+
+        let editPerformanceId = event.target.id.split("_")[1]
+
+        let editPerformanceWithId = document.querySelector(`#editPerformanceName_${editPerformanceId}`)
+
+        console.log(editPerformanceWithId)
+
+        while (editPerformanceWithId.firstChild) {
+            editPerformanceWithId.removeChild(editPerformanceWithId.firstChild)
+        }
+
+        fetchCalls.getAllPerformances(editPerformanceId).then(performanceToEdit => {
+            let editPerformance = performances.editPerformance(performanceToEdit)
+            editPerformanceWithId.appendChild(editPerformance)
+        })
+
     }
 
 }

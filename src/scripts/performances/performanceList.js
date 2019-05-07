@@ -26,7 +26,6 @@ const listPerformances = {
                 let performancesResponseDate = document.createElement("p")
                 performancesResponseDate.textContent = performancesResponse.date
 
-
                 listPerformancesFragment.appendChild(performancesResponseName)
                 listPerformancesFragment.appendChild(performancesResponseLocation)
                 listPerformancesFragment.appendChild(performancesResponseDate)
@@ -37,6 +36,12 @@ const listPerformances = {
                 listPerformancesFragment.appendChild(deleteButton)
 
                 deleteButton.addEventListener("click", performancesHandlers.deletePerformance)
+
+                let editButton = document.createElement("button")
+                editButton.setAttribute("id", `editButton_${performancesResponse.id}`)
+                editButton.textContent = "Edit Performance"
+                editButton.addEventListener("click", performancesHandlers.editPerformanceHandler)
+                listPerformancesFragment.appendChild(editButton)
             })
 
             // getting container

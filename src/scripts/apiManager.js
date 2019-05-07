@@ -22,6 +22,16 @@ const fetchCalls = {
         return fetch(`${url}/performances/${performanceId}`, {
             method: "DELETE"
         })
+    },
+
+    editPerformances(performanceId, updatedPerformance) {
+        return fetch(`${url}performances/${performanceId}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            }, 
+            body: JSON.stringify(updatedPerformance)
+        })
     }
 }
 

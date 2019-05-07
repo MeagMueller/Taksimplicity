@@ -2,6 +2,7 @@ import fetchCalls from "../apiManager"
 import performanceHandlers from "../performances/performancesHandlers"
 
 const displayContainer = document.querySelector("#display-container")
+const editDisplay = document.querySelector("#edit-display")
 
 const performances = {
     createNewPerformance() {
@@ -60,6 +61,26 @@ const performances = {
 
         displayContainer.appendChild(newPerformanceFragment)
 
+    },
+
+    editPerformance() {
+        let editPerformanceFragment = document.createDocumentFragment()
+
+        let editPerformanceNameLabel = document.createElement("label")
+        editPerformanceNameLabel.textContent = "Update Performance Name: "
+        editPerformanceFragment.appendChild(editPerformanceNameLabel)
+
+        let editPerformanceNameInput = document.createElement("input")
+        editPerformanceNameInput.setAttribute("id", `editPerformanceName_${performances.id}`)
+        editPerformanceFragment.appendChild(editPerformanceNameInput)
+
+        let editPerformanceLocationInput = document.createElement("input")
+        editPerformanceLocationInput.setAttribute("id", `editPerformanceLocation_${performances.id}`)
+        editPerformanceFragment.appendChild(editPerformanceLocationInput)
+
+        let confirmEditButton = document.createElement("button")
+        confirmEditButton.addEventListener("click")
+        editPerformanceFragment.appendChild(confirmEditButton)
     }
 }
 
