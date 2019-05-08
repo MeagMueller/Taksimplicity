@@ -50,6 +50,26 @@ const performances = {
         newPerformancePaidYesCheckbox.setAttribute("id", "paid")
         newPerformanceFragment.appendChild(newPerformancePaidYesCheckbox)
 
+        let danceStylesPerformanceLabel = document.createElement("label")
+        danceStylesPerformanceLabel.textContent = "Dance Style? "
+        newPerformanceFragment.appendChild(danceStylesPerformanceLabel)
+
+        let danceStylesPerformanceDropDown = document.createElement("select")
+        danceStylesPerformanceDropDown.setAttribute("id", "danceStylesDropDown")
+        
+
+        fetchCalls.getAllDanceStyles().then(danceStylesResponse => {
+            danceStylesResponse.forEach(danceStyle => {
+                let danceStylesOption = document.createElement("option")
+                danceStylesOption.textContent = danceStyle.name
+                danceStylesOption.value = danceStyle.id
+
+                danceStylesPerformanceDropDown.appendChild(danceStylesOption)
+            })
+        })
+
+        newPerformanceFragment.appendChild(danceStylesPerformanceDropDown)
+
         // creating save button
 
         let saveNewPerformanceButton = document.createElement("button")

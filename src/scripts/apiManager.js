@@ -3,6 +3,9 @@ import performanceHandlers from "./performances/performancesHandlers"
 const url = "http://localhost:8088"
 
 const fetchCalls = {
+
+    // Performance Fetch Calls
+
     getAllPerformances() {
         return fetch(`${url}/performances`).then(response => response.json())
     },
@@ -37,6 +40,18 @@ const fetchCalls = {
             }, 
             body: JSON.stringify(updatedPerformance)
         })
+    },
+
+    // Props fetch calls
+
+    getAllProps() {
+        return fetch(`${url}/props`).then(response => response.json())
+    },
+
+    // Dance styles fetch calls
+
+    getAllDanceStyles() {
+        return fetch(`${url}/danceStyle`).then(response => response.json())
     }
 }
 
