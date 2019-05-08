@@ -47,7 +47,7 @@ const performanceHandlers = {
 
         let editPerformanceId = event.target.id.split("_")[1]
 
-        let editPerformanceWithId = document.querySelector(`#editPerformanceName_${editPerformanceId}`)
+        const editPerformanceWithId = document.querySelector(`#eachPerformanceDiv_${editPerformanceId}`)
 
         console.log(editPerformanceWithId)
 
@@ -55,11 +55,31 @@ const performanceHandlers = {
             editPerformanceWithId.removeChild(editPerformanceWithId.firstChild)
         }
 
-        fetchCalls.getAllPerformances(editPerformanceId).then(performanceToEdit => {
-            let editPerformance = performances.editPerformance(performanceToEdit)
-            editPerformanceWithId.appendChild(editPerformance)
+        fetchCalls.getSinglePerformance(editPerformanceId).then(performanceToEdit => {
+            let performanceEditForm = performances.editPerformance(performanceToEdit)
+            console.log(performanceEditForm)
+            editPerformanceWithId.appendChild(performanceEditForm)
         })
+    },
 
+    updatePerformanceHandler() {
+        console.log("Update button clicked", event.target.id.split("_")[1])
+
+        let updatePerformanceId = event.target.id.split("_")[1]
+
+        let editedPerformanceName = document.querySelector(`#editPerformanceName_${updatePerformanceId}`)
+        let editedPerformanceLocation = document.querySelector(`#editPerformanceLocation_${updatePerformanceId}`)
+        let editedPerformanceDate = document.querySelector(`#editPerformanceDate_${updatePerformanceId}`)
+
+        console.log(editedPerformanceName.value, editedPerformanceLocation.value, editedPerformanceDate.value)
+
+        let updatedPerformance = {
+            name: editedPerformanceName.value,
+            location: editedPerformanceLocation.value, 
+            date: editedPerformanceDate.value
+        }
+
+        fetchCalls.editPerformances(updatePerformanceId, updatedPerformance).then(() => listPerformances.listAllPerformances())
     }
 
 }

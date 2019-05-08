@@ -1,7 +1,7 @@
 import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import performancesHandlers from "../performances/performancesHandlers"
-import performanceHandlers from "../performances/performancesHandlers";
+import domBuilders from "../domManager"
 
 const listPerformances = {
     listAllPerformances() {
@@ -13,6 +13,9 @@ const listPerformances = {
 
             // create fragment
             let listPerformancesFragment = document.createDocumentFragment()
+
+            let performanceDiv = document.createElement("div")
+            performanceDiv.setAttribute("id", "performanceDiv")
 
             // going through each response and building out the HTML
             performancesResponse.forEach((performancesResponse) => {
@@ -42,6 +45,12 @@ const listPerformances = {
                 editButton.textContent = "Edit Performance"
                 editButton.addEventListener("click", performancesHandlers.editPerformanceHandler)
                 listPerformancesFragment.appendChild(editButton)
+
+                let eachPerformanceContainer = document.createElement("div")
+                eachPerformanceContainer.setAttribute("id", `eachPerformanceDiv_${performancesResponse.id}`)
+                eachPerformanceContainer.appendChild(listPerformancesFragment)
+
+                performanceDiv.appendChild(eachPerformanceContainer)
             })
 
             // getting container
@@ -53,7 +62,7 @@ const listPerformances = {
             }
 
             // appending fragment to container
-            performancesSection.appendChild(listPerformancesFragment)
+            performancesSection.appendChild(performanceDiv)
         })
     }
 }

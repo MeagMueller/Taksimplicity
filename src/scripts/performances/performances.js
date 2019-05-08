@@ -63,7 +63,10 @@ const performances = {
 
     },
 
-    editPerformance() {
+    editPerformance(editPerformancesId) {
+
+        console.log(editPerformancesId)
+        
         let editPerformanceFragment = document.createDocumentFragment()
 
         let editPerformanceNameLabel = document.createElement("label")
@@ -71,16 +74,33 @@ const performances = {
         editPerformanceFragment.appendChild(editPerformanceNameLabel)
 
         let editPerformanceNameInput = document.createElement("input")
-        editPerformanceNameInput.setAttribute("id", `editPerformanceName_${performances.id}`)
+        editPerformanceNameInput.setAttribute("id", `editPerformanceName_${editPerformancesId.id}`)
         editPerformanceFragment.appendChild(editPerformanceNameInput)
 
+        let editPerformanceLocationLabel = document.createElement("label")
+        editPerformanceLocationLabel.textContent = "Update Location: "
+        editPerformanceFragment.appendChild(editPerformanceLocationLabel)
+
         let editPerformanceLocationInput = document.createElement("input")
-        editPerformanceLocationInput.setAttribute("id", `editPerformanceLocation_${performances.id}`)
+        editPerformanceLocationInput.setAttribute("id", `editPerformanceLocation_${editPerformancesId.id}`)
         editPerformanceFragment.appendChild(editPerformanceLocationInput)
 
+        let editPerformanceDateLabel = document.createElement("label")
+        editPerformanceDateLabel.textContent = "Update Date: "
+        editPerformanceFragment.appendChild(editPerformanceDateLabel)
+
+        let editPerformanceDateInput = document.createElement("input")
+        editPerformanceDateInput.setAttribute("type", "date")
+        editPerformanceDateInput.setAttribute("id", `editPerformanceDate_${editPerformancesId.id}`)
+        editPerformanceFragment.appendChild(editPerformanceDateInput)
+
         let confirmEditButton = document.createElement("button")
-        confirmEditButton.addEventListener("click")
+        confirmEditButton.textContent = "Save Changes"
+        confirmEditButton.setAttribute("id", `confirmEditButton_${editPerformancesId.id}`)
+        confirmEditButton.addEventListener("click", performanceHandlers.updatePerformanceHandler)
         editPerformanceFragment.appendChild(confirmEditButton)
+
+        return editPerformanceFragment
     }
 }
 

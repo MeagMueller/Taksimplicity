@@ -7,6 +7,11 @@ const fetchCalls = {
         return fetch(`${url}/performances`).then(response => response.json())
     },
 
+    getSinglePerformance(singlePerformanceId) {
+        return fetch(`${url}/performances/${singlePerformanceId}`).then((response => response.json())
+        )
+    },
+
     postPerformances(newPerformance) {
         return fetch(`${url}/performances`, {
             method: "POST",
@@ -24,8 +29,8 @@ const fetchCalls = {
         })
     },
 
-    editPerformances(performanceId, updatedPerformance) {
-        return fetch(`${url}performances/${performanceId}`, {
+    editPerformances(updatePerformanceId, updatedPerformance) {
+        return fetch(`${url}/performances/${updatePerformanceId}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
