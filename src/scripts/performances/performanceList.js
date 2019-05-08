@@ -19,6 +19,8 @@ const listPerformances = {
 
             // going through each response and building out the HTML
             performancesResponse.forEach((performancesResponse) => {
+
+                // creating HTML displays for each performance that comes back from the database
                 
                 let performancesResponseName = document.createElement("h2")
                 performancesResponseName.textContent = performancesResponse.name
@@ -29,9 +31,13 @@ const listPerformances = {
                 let performancesResponseDate = document.createElement("p")
                 performancesResponseDate.textContent = performancesResponse.date
 
+                let performancesDanceStyle = document.createElement("p")
+                performancesDanceStyle.textContent = performancesResponse.danceStyle.name
+
                 listPerformancesFragment.appendChild(performancesResponseName)
                 listPerformancesFragment.appendChild(performancesResponseLocation)
                 listPerformancesFragment.appendChild(performancesResponseDate)
+                listPerformancesFragment.appendChild(performancesDanceStyle)
 
                 let deleteButton = document.createElement("button")
                 deleteButton.setAttribute("id", `deleteButton_${performancesResponse.id}`)

@@ -12,15 +12,17 @@ const performanceHandlers = {
         let performanceLocation = document.querySelector("#newPerformanceLocationInput").value
         let performanceDate = document.querySelector("#newPerformanceDate").value
         let performancePaid = document.querySelector("#paid").checked
+        let danceStylesPerformance = document.querySelector("#danceStylesDropDown").value
         // pull values in input fields to check console log
 
-        console.log("Inputs", performanceName, performanceLocation, performanceDate)
+        console.log("Inputs", performanceName, performanceLocation, performanceDate, performancePaid, danceStylesPerformance)
         // building data according to data struction in json
         const newPerformance = {
             name: performanceName,
             location: performanceLocation,
             date: performanceDate,
-            paid: performancePaid
+            paid: performancePaid,
+            danceStyleId: Number(danceStylesPerformance)
         }
         // console.log the object to see if it looks proper
 
@@ -47,13 +49,19 @@ const performanceHandlers = {
 
         let editPerformanceId = event.target.id.split("_")[1]
 
+        // split so ids can be used to target
+
         const editPerformanceWithId = document.querySelector(`#eachPerformanceDiv_${editPerformanceId}`)
 
         console.log(editPerformanceWithId)
 
+        // while loop to clear container
+
         while (editPerformanceWithId.firstChild) {
             editPerformanceWithId.removeChild(editPerformanceWithId.firstChild)
         }
+
+        // fetch call
 
         fetchCalls.getSinglePerformance(editPerformanceId).then(performanceToEdit => {
             let performanceEditForm = performances.editPerformance(performanceToEdit)

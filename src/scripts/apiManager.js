@@ -7,11 +7,11 @@ const fetchCalls = {
     // Performance Fetch Calls
 
     getAllPerformances() {
-        return fetch(`${url}/performances`).then(response => response.json())
+        return fetch(`${url}/performances?_expand=danceStyle`).then(response => response.json())
     },
 
     getSinglePerformance(singlePerformanceId) {
-        return fetch(`${url}/performances/${singlePerformanceId}`).then((response => response.json())
+        return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle`).then((response => response.json())
         )
     },
 
@@ -51,7 +51,7 @@ const fetchCalls = {
     // Dance styles fetch calls
 
     getAllDanceStyles() {
-        return fetch(`${url}/danceStyle`).then(response => response.json())
+        return fetch(`${url}/danceStyles`).then(response => response.json())
     }
 }
 

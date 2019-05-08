@@ -57,6 +57,7 @@ const performances = {
         let danceStylesPerformanceDropDown = document.createElement("select")
         danceStylesPerformanceDropDown.setAttribute("id", "danceStylesDropDown")
         
+        // fetch call to get dance styles to display in dropdown
 
         fetchCalls.getAllDanceStyles().then(danceStylesResponse => {
             danceStylesResponse.forEach(danceStyle => {
@@ -86,8 +87,12 @@ const performances = {
     editPerformance(editPerformancesId) {
 
         console.log(editPerformancesId)
+
+        // creating fragment
         
         let editPerformanceFragment = document.createDocumentFragment()
+
+        // creating labels and inputs to be edited
 
         let editPerformanceNameLabel = document.createElement("label")
         editPerformanceNameLabel.textContent = "Update Performance Name: "
@@ -114,11 +119,15 @@ const performances = {
         editPerformanceDateInput.setAttribute("id", `editPerformanceDate_${editPerformancesId.id}`)
         editPerformanceFragment.appendChild(editPerformanceDateInput)
 
+        // creating save button which calls update event
+
         let confirmEditButton = document.createElement("button")
         confirmEditButton.textContent = "Save Changes"
         confirmEditButton.setAttribute("id", `confirmEditButton_${editPerformancesId.id}`)
         confirmEditButton.addEventListener("click", performanceHandlers.updatePerformanceHandler)
         editPerformanceFragment.appendChild(confirmEditButton)
+
+        // return
 
         return editPerformanceFragment
     }
