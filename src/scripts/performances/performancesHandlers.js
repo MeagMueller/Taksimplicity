@@ -78,16 +78,24 @@ const performanceHandlers = {
         let editedPerformanceName = document.querySelector(`#editPerformanceName_${updatePerformanceId}`)
         let editedPerformanceLocation = document.querySelector(`#editPerformanceLocation_${updatePerformanceId}`)
         let editedPerformanceDate = document.querySelector(`#editPerformanceDate_${updatePerformanceId}`)
+        let editedPerformancePaid = document.querySelector(`#editPerformancePaid_${updatePerformanceId}`)
+        let editedPerformanceDanceStyle = document.querySelector(`#editDanceStyles_${updatePerformanceId}`)
 
         console.log(editedPerformanceName.value, editedPerformanceLocation.value, editedPerformanceDate.value)
 
         let updatedPerformance = {
             name: editedPerformanceName.value,
             location: editedPerformanceLocation.value, 
-            date: editedPerformanceDate.value
+            date: editedPerformanceDate.value,
+            paid: editedPerformancePaid.checked,
+            danceStyleId: Number(editedPerformanceDanceStyle.value)
         }
 
         fetchCalls.editPerformances(updatePerformanceId, updatedPerformance).then(() => listPerformances.listAllPerformances())
+    },
+
+    addPerformanceButtonHandler() {
+
     }
 
 }

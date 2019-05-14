@@ -5,6 +5,19 @@ const displayContainer = document.querySelector("#display-container")
 const editDisplay = document.querySelector("#edit-display")
 
 const performances = {
+
+    createNewPerformanceButton() {
+        let createNewPerformanceButton = document.createElement("button")
+        createNewPerformanceButton.setAttribute("id", "createNewPerformanceButton")
+        createNewPerformanceButton.textContent = "Add New Performance"
+
+        createNewPerformanceButton.addEventListener("click", () => {
+            this.createNewPerformance()
+        })
+
+        displayContainer.appendChild(createNewPerformanceButton)
+    },
+
     createNewPerformance() {
         // creating form
         let newPerformanceFragment = document.createDocumentFragment()
@@ -60,10 +73,10 @@ const performances = {
         // fetch call to get dance styles to display in dropdown
 
         fetchCalls.getAllDanceStyles().then(danceStylesResponse => {
-            danceStylesResponse.forEach(danceStyle => {
+            danceStylesResponse.forEach(danceStyles => {
                 let danceStylesOption = document.createElement("option")
-                danceStylesOption.textContent = danceStyle.name
-                danceStylesOption.value = danceStyle.id
+                danceStylesOption.textContent = danceStyles.name
+                danceStylesOption.value = danceStyles.id
 
                 danceStylesPerformanceDropDown.appendChild(danceStylesOption)
             })
@@ -99,6 +112,7 @@ const performances = {
         editPerformanceFragment.appendChild(editPerformanceNameLabel)
 
         let editPerformanceNameInput = document.createElement("input")
+        editPerformanceNameInput.value = editPerformancesId.name
         editPerformanceNameInput.setAttribute("id", `editPerformanceName_${editPerformancesId.id}`)
         editPerformanceFragment.appendChild(editPerformanceNameInput)
 
@@ -107,6 +121,7 @@ const performances = {
         editPerformanceFragment.appendChild(editPerformanceLocationLabel)
 
         let editPerformanceLocationInput = document.createElement("input")
+        editPerformanceLocationInput.value = editPerformancesId.location
         editPerformanceLocationInput.setAttribute("id", `editPerformanceLocation_${editPerformancesId.id}`)
         editPerformanceFragment.appendChild(editPerformanceLocationInput)
 
@@ -116,8 +131,33 @@ const performances = {
 
         let editPerformanceDateInput = document.createElement("input")
         editPerformanceDateInput.setAttribute("type", "date")
+        editPerformanceDateInput.value = editPerformancesId.date
         editPerformanceDateInput.setAttribute("id", `editPerformanceDate_${editPerformancesId.id}`)
         editPerformanceFragment.appendChild(editPerformanceDateInput)
+
+        let editPerformancePaidLabel = document.createElement("label")
+        editPerformancePaidLabel.textContent = "Paid?"
+        editPerformanceFragment.appendChild(editPerformancePaidLabel)
+
+        let editPerformancePaidCheckbox = document.createElement("input")
+        editPerformancePaidCheckbox.setAttribute("type", "checkbox")
+        editPerformancePaidCheckbox.setAttribute("id", `editPerformancePaid_${editPerformancesId.id}`)
+        editPerformanceFragment.appendChild(editPerformancePaidCheckbox)
+
+        let editDanceStylesDropdown = document.createElement("select")
+        editDanceStylesDropdown.setAttribute("id", `editDanceStyles_${editPerformancesId.id}`)
+
+        fetchCalls.getAllDanceStyles().then(editDanceStylesResponse => {
+            editDanceStylesResponse.forEach(editDanceStyles => {
+                let editDanceStylesOption = document.createElement("option")
+                editDanceStylesOption.textContent = editDanceStyles.name
+                editDanceStylesOption.value = editDanceStyles.id
+
+                editDanceStylesDropdown.appendChild(editDanceStylesOption)
+            })
+        })
+
+        editPerformanceFragment.appendChild(editDanceStylesDropdown)
 
         // creating save button which calls update event
 

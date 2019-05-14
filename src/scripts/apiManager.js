@@ -45,7 +45,21 @@ const fetchCalls = {
     // Props fetch calls
 
     getAllProps() {
-        return fetch(`${url}/props`).then(response => response.json())
+        return fetch(`${url}/props?_expand=danceStyle`).then(response => response.json())
+    },
+
+    getSingleProp(singlePropId) {
+        return fetch(`${url}/props/${singlePropId}?_expand=danceStyle`).then(response => response.json())
+    },
+
+    postProps(newProps) {
+        return fetch(`${url}/props`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newProps)
+        }).then(response => response.json())
     },
 
     // Dance styles fetch calls
