@@ -4,6 +4,12 @@ const url = "http://localhost:8088"
 
 const fetchCalls = {
 
+    // Login Fetch Calls
+
+    getUsers() {
+        return fetch(`${url}/users`).then(response => response.json())
+    },
+
     // Performance Fetch Calls
 
     getAllPerformances() {

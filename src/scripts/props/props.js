@@ -73,7 +73,7 @@ const props = {
         let editPropDanceStyleDropDown = document.createElement("select")
         editPropDanceStyleDropDown.setAttribute("id", `editDanceStyle_${editPropsId.id}`)
 
-        fetchCalls.getAllProps().then(editDanceStylesResponse ={
+        fetchCalls.getAllProps().then(editDanceStylesResponse => {
             editDanceStylesResponse.forEach(editDanceStyles => {
                 let editDanceStylesOption = document.createElement("option")
                 editDanceStylesOption.textContent = editDanceStyles.name
