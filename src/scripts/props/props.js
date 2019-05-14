@@ -56,6 +56,38 @@ const props = {
         saveNewPropButton.addEventListener("click", propsHandlers.saveNewProp)
 
         displayPropsContainer.appendChild(propsFragment)
+    },
+
+    editProp(editPropsId) {
+        let editPropFragment = document.createDocumentFragment()
+
+        let editPropNameLabel = document.createElement("label")
+        editPropNameLabel.textContent = "Update Prop Name: "
+        editPropFragment.appendChild(editPropNameLabel)
+
+        let editPropNameInput = document.createElement("input")
+        editPropNameInput.value = editPropsId.name
+        editPropNameInput.setAttribute("id", `editPropName_${editPropsId.id}`)
+        editPropFragment.appendChild(editPropNameInput)
+
+        let editPropDanceStyleDropDown = document.createElement("select")
+        editPropDanceStyleDropDown.setAttribute("id", `editDanceStyle_${editPropsId.id}`)
+
+        fetchCalls.getAllProps().then(editDanceStylesResponse ={
+            editDanceStylesResponse.forEach(editDanceStyles => {
+                let editDanceStylesOption = document.createElement("option")
+                editDanceStylesOption.textContent = editDanceStyles.name
+                editDanceStylesOption.value = editDanceStyles.id
+
+                editPropDanceStyleDropDown.appendChild(editDanceStylesOption)
+            })
+        })
+
+        editPropFragment.appendChild(editPropDanceStyleDropDown)
+
+        let confirmPropEditButton = document.createElement("button")
+        confirmPropEditButton.textContent = "Save Changes"
+        confirmPropEditButton.setAttribute("id", `confirmPropEditButton_${editPropsId.id}`)
     }
 }
 
