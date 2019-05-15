@@ -79,6 +79,12 @@ const fetchCalls = {
         })
     },
 
+    deleteProps(propsDeleteId) {
+        return fetch(`${url}/props/${propsDeleteId}`, {
+            method: "DELETE"
+        })
+    },
+
     // Dance styles fetch calls
 
     getAllDanceStyles() {

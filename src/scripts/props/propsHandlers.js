@@ -60,6 +60,12 @@ const propsHandlers = {
         // Fetch call to edit and then list after updated
 
         fetchCalls.editProps(updatePropsId, updatedProp).then(() =>listProps.listAllProps())
+    },
+
+    deletePropHandler() {
+        let propDeleteId = event.target.id.split("_")[1]
+
+        fetchCalls.deleteProps(propDeleteId).then(() => listProps.listAllProps())
     }
 
 }

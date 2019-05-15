@@ -38,6 +38,13 @@ const listProps = {
                 propsEditButton.addEventListener("click", propsHandlers.editPropsHandler)
                 listPropsFragment.appendChild(propsEditButton)
 
+                let propsDeleteButton = document.createElement("button")
+                propsDeleteButton.setAttribute("id", `deletePropButton_${propsResponse.id}`)
+                propsDeleteButton.textContent = "Delete Prop"
+                listPropsFragment.appendChild(propsDeleteButton)
+
+                propsDeleteButton.addEventListener("click", propsHandlers.deletePropHandler)
+
                 let eachPropContainer = document.createElement("div")
                 eachPropContainer.setAttribute("id", `eachPropDiv_${propsResponse.id}`)
                 eachPropContainer.appendChild(listPropsFragment)

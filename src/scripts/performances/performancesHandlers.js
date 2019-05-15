@@ -73,7 +73,11 @@ const performanceHandlers = {
     updatePerformanceHandler() {
         console.log("Update button clicked", event.target.id.split("_")[1])
 
+        // Split to get id
+
         let updatePerformanceId = event.target.id.split("_")[1]
+
+        // Getting values from performances.js
 
         let editedPerformanceName = document.querySelector(`#editPerformanceName_${updatePerformanceId}`)
         let editedPerformanceLocation = document.querySelector(`#editPerformanceLocation_${updatePerformanceId}`)
@@ -83,6 +87,8 @@ const performanceHandlers = {
 
         console.log(editedPerformanceName.value, editedPerformanceLocation.value, editedPerformanceDate.value)
 
+        // Getting values to be converted to json in fetch call
+
         let updatedPerformance = {
             name: editedPerformanceName.value,
             location: editedPerformanceLocation.value, 
@@ -90,6 +96,8 @@ const performanceHandlers = {
             paid: editedPerformancePaid.checked,
             danceStyleId: Number(editedPerformanceDanceStyle.value)
         }
+
+        // Fetch call to edit and then list after updated
 
         fetchCalls.editPerformances(updatePerformanceId, updatedPerformance).then(() => listPerformances.listAllPerformances())
     },
