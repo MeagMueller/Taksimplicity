@@ -73,7 +73,7 @@ const props = {
         let editPropDanceStyleDropDown = document.createElement("select")
         editPropDanceStyleDropDown.setAttribute("id", `editDanceStyle_${editPropsId.id}`)
 
-        fetchCalls.getAllProps().then(editDanceStylesResponse => {
+        fetchCalls.getAllDanceStyles().then(editDanceStylesResponse => {
             editDanceStylesResponse.forEach(editDanceStyles => {
                 let editDanceStylesOption = document.createElement("option")
                 editDanceStylesOption.textContent = editDanceStyles.name
@@ -88,6 +88,11 @@ const props = {
         let confirmPropEditButton = document.createElement("button")
         confirmPropEditButton.textContent = "Save Changes"
         confirmPropEditButton.setAttribute("id", `confirmPropEditButton_${editPropsId.id}`)
+        confirmPropEditButton.addEventListener("click", propsHandlers.updatePropsHandler)
+
+        editPropFragment.appendChild(confirmPropEditButton)
+
+        return editPropFragment
     }
 }
 

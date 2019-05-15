@@ -1,4 +1,5 @@
 import performanceHandlers from "./performances/performancesHandlers"
+import propsHandlers from "./props/propsHandlers"
 
 const url = "http://localhost:8088"
 
@@ -66,6 +67,16 @@ const fetchCalls = {
             },
             body: JSON.stringify(newProps)
         }).then(response => response.json())
+    },
+
+    editProps(updatePropsId, updatedProp) {
+        return fetch(`${url}/props/${updatePropsId}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(updatedProp)
+        })
     },
 
     // Dance styles fetch calls

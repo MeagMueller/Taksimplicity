@@ -32,10 +32,11 @@ const listProps = {
                 listPropsFragment.appendChild(propsResponseName)
                 listPropsFragment.appendChild(propsResponseDanceStyles)
 
-                // let propsEditButton = document.createElement("button")
-                // propsEditButton.setAttribute("id", `propEditButton_${propsResponse.id}`)
-                // propsEditButton.textcontent = "Edit Prop"
-                // propsEditButton.addEventListener("click",)
+                let propsEditButton = document.createElement("button")
+                propsEditButton.setAttribute("id", `propEditButton_${propsResponse.id}`)
+                propsEditButton.textContent = "Edit Prop"
+                propsEditButton.addEventListener("click", propsHandlers.editPropsHandler)
+                listPropsFragment.appendChild(propsEditButton)
 
                 let eachPropContainer = document.createElement("div")
                 eachPropContainer.setAttribute("id", `eachPropDiv_${propsResponse.id}`)

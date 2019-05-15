@@ -22,19 +22,44 @@ const propsHandlers = {
     },
 
     editPropsHandler() {
-        console.log("Edit Props Button Clicked", event.target.dispatchEvent.split("_"[1]))
+        console.log("Edit Props Button Clicked", event.target.id.split("_"[1]))
 
-        let editPropsId = edit.target.id.split("_")[1]
+        let editPropsId = event.target.id.split("_")[1]
 
         let editPropsWithId = document.querySelector(`#eachPropDiv_${editPropsId}`)
 
         while (editPropsWithId.firstChild) {
-            editPropsWithId.removeChild(editPropsWitId.firstChild)
+            editPropsWithId.removeChild(editPropsWithId.firstChild)
         }
 
         fetchCalls.getSingleProp(editPropsId).then(propToEdit => {
             let propsEditForm = props.editProp(propToEdit)
+            editPropsWithId.appendChild(propsEditForm)
         })
+    },
+
+    updatePropsHandler() {
+        // Split to get id 
+
+        let updatePropsId = event.target.id.split("_")[1]
+
+        // Getting values from props.js 
+
+        let editedPropName = document.querySelector(`#editPropName_${updatePropsId}`)
+        let editedPropDanceStyle = document.querySelector(`#editDanceStyle_${updatePropsId}`)
+
+        console.log(editedPropName.value)
+
+        // Getting values to be converted to json in fetch call
+
+        let updatedProp = {
+            name: editedPropName.value,
+            danceStyleId: Number(editedPropDanceStyle.value)
+        }
+
+        // Fetch call to edit and then list after updated
+
+        fetchCalls.editProps(updatePropsId, updatedProp).then(() =>listProps.listAllProps())
     }
 
 }
