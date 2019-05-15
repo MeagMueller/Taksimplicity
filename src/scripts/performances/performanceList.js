@@ -17,8 +17,18 @@ const listPerformances = {
             let performanceDiv = document.createElement("div")
             performanceDiv.setAttribute("id", "performanceDiv")
 
+            let createNewPerformanceButtonListed = document.createElement("button")
+            createNewPerformanceButtonListed.textContent = "Add New Performance"
+            createNewPerformanceButtonListed.addEventListener("click", () => {
+                performances.createNewPerformance()
+            })
+
+            performanceDiv.appendChild(createNewPerformanceButtonListed)
+
             // going through each response and building out the HTML
             performancesResponse.forEach((performancesResponse) => {
+
+                // creating HTML displays for each performance that comes back from the database
                 
                 let performancesResponseName = document.createElement("h2")
                 performancesResponseName.textContent = performancesResponse.name
@@ -29,9 +39,27 @@ const listPerformances = {
                 let performancesResponseDate = document.createElement("p")
                 performancesResponseDate.textContent = performancesResponse.date
 
+                let performancesDanceStyles = document.createElement("p")
+                performancesDanceStyles.textContent = performancesResponse.danceStyle.name
+
+                let paidPerformance = performancesResponse.paid
+
                 listPerformancesFragment.appendChild(performancesResponseName)
                 listPerformancesFragment.appendChild(performancesResponseLocation)
                 listPerformancesFragment.appendChild(performancesResponseDate)
+                listPerformancesFragment.appendChild(performancesDanceStyles)
+
+                if (paidPerformance === true) {
+                    let performancesPaid = document.createElement("p")
+                    performancesPaid.textContent = "Paid Performance"
+                    listPerformancesFragment.appendChild(performancesPaid)
+                }
+
+                let editButton = document.createElement("button")
+                editButton.setAttribute("id", `editButton_${performancesResponse.id}`)
+                editButton.textContent = "Edit Performance"
+                editButton.addEventListener("click", performancesHandlers.editPerformanceHandler)
+                listPerformancesFragment.appendChild(editButton)
 
                 let deleteButton = document.createElement("button")
                 deleteButton.setAttribute("id", `deleteButton_${performancesResponse.id}`)
@@ -39,12 +67,6 @@ const listPerformances = {
                 listPerformancesFragment.appendChild(deleteButton)
 
                 deleteButton.addEventListener("click", performancesHandlers.deletePerformance)
-
-                let editButton = document.createElement("button")
-                editButton.setAttribute("id", `editButton_${performancesResponse.id}`)
-                editButton.textContent = "Edit Performance"
-                editButton.addEventListener("click", performancesHandlers.editPerformanceHandler)
-                listPerformancesFragment.appendChild(editButton)
 
                 let eachPerformanceContainer = document.createElement("div")
                 eachPerformanceContainer.setAttribute("id", `eachPerformanceDiv_${performancesResponse.id}`)
@@ -64,6 +86,8 @@ const listPerformances = {
             // appending fragment to container
             performancesSection.appendChild(performanceDiv)
         })
+
+        
     }
 }
 
