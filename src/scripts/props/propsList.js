@@ -2,6 +2,8 @@ import props from "../props/props"
 import propsHandlers from "../props/propsHandlers"
 import fetchCalls from "../apiManager"
 
+let propsSection = document.querySelector("#display-props")
+
 const listProps = {
     
     listAllProps() {
@@ -52,14 +54,26 @@ const listProps = {
                 propsDiv.appendChild(eachPropContainer)
             })
 
-            let propsSection = document.querySelector("#display-props")
-
             while(propsSection.firstChild) {
                 propsSection.removeChild(propsSection.firstChild)
             }
 
             propsSection.appendChild(propsDiv)
         })
+
+    },
+
+    propsListButton() {
+
+        let propsListDiv = document.createElement("div")
+
+        let propsListButton = document.createElement("button")
+        propsListButton.setAttribute("id", "propsListButton")
+        propsListButton.textContent = "Props List"
+        propsListButton.addEventListener("click", this.listAllProps)
+
+        propsListDiv.appendChild(propsListButton)
+        propsSection.appendChild(propsListDiv)
 
     }
 }

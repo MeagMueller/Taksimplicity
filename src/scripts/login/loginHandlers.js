@@ -2,6 +2,10 @@ import login from "./login"
 import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import props from "../props/props"
+import performancesList from "../performances/performanceList"
+import propsList from "../props/propsList"
+import propsHandlers from "../props/propsHandlers"
+import logout from "../logout/logout"
 
 let loginContainer = document.querySelector("#login-container")
 
@@ -40,6 +44,12 @@ const loginHandlers = {
 
                     performances.createNewPerformanceButton()
                     props.createNewPropButton()
+
+                    propsList.propsListButton()
+                    performancesList.listAllPerformances()
+
+                    logout.logoutButton()
+                    
 
                 }
             

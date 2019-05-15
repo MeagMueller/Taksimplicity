@@ -19,6 +19,7 @@ const performances = {
     },
 
     createNewPerformance() {
+
         // creating form
         let newPerformanceFragment = document.createDocumentFragment()
 
@@ -62,6 +63,15 @@ const performances = {
         newPerformancePaidYesCheckbox.setAttribute("type", "checkbox")
         newPerformancePaidYesCheckbox.setAttribute("id", "paid")
         newPerformanceFragment.appendChild(newPerformancePaidYesCheckbox)
+
+        // let newPerformanceTroupeYesLabel = document.createElement("label")
+        // newPerformanceTroupeYesLabel.textContent = "Yes "
+        // newPerformanceFragment.appendChild(newPerformanceTroupeYesLabel)
+
+        // let newPerformanceTroupeYesCheckbox = document.createElement("input")
+        // newPerformanceTroupeYesCheckbox.setAttribute("type", "checkbox")
+        // newPerformanceTroupeYesCheckbox.setAttribute("id", "troupePerformance")
+        // newPerformanceFragment.appendChild(newPerformanceTroupeYesCheckbox)
 
         let danceStylesPerformanceLabel = document.createElement("label")
         danceStylesPerformanceLabel.textContent = "Dance Style? "

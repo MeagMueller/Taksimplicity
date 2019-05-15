@@ -14,10 +14,16 @@ const fetchCalls = {
     // Performance Fetch Calls
 
     getAllPerformances() {
-        return fetch(`${url}/performances?_expand=danceStyle`).then(response => response.json())
+
+        let userId = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/performances?_expand=danceStyle&userId=${userId}`).then(response => response.json())
     },
 
     getSinglePerformance(singlePerformanceId) {
+
+        let userId = sessionStorage.getItem("userId")
+
         return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle`).then((response => response.json())
         )
     },
