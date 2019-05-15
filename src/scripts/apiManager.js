@@ -15,21 +15,24 @@ const fetchCalls = {
 
     getAllPerformances() {
 
-        let userId = sessionStorage.getItem("userId")
+        let userIdAllPerf = sessionStorage.getItem("userId")
 
-        return fetch(`${url}/performances?_expand=danceStyle&userId=${userId}`).then(response => response.json())
+        return fetch(`${url}/performances?_expand=danceStyle&userId=${userIdAllPerf}`).then(response => response.json())
     },
 
     getSinglePerformance(singlePerformanceId) {
 
-        let userId = sessionStorage.getItem("userId")
+        let userIdSinglePerf = sessionStorage.getItem("userId")
 
-        return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle`).then((response => response.json())
+        return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle&userId=${userIdSinglePerf}`).then((response => response.json())
         )
     },
 
     postPerformances(newPerformance) {
-        return fetch(`${url}/performances`, {
+
+        let userIdPostPerf = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/performances?userId=${userIdPostPerf}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

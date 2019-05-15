@@ -13,6 +13,7 @@ const performanceHandlers = {
         let performanceDate = document.querySelector("#newPerformanceDate").value
         let performancePaid = document.querySelector("#paid").checked
         let danceStylesPerformance = document.querySelector("#danceStylesDropDown").value
+        let userIdPerformance = sessionStorage.getItem("userId")
         // pull values in input fields to check console log
 
         console.log("Inputs", performanceName, performanceLocation, performanceDate, performancePaid, danceStylesPerformance)
@@ -22,7 +23,8 @@ const performanceHandlers = {
             location: performanceLocation,
             date: performanceDate,
             paid: performancePaid,
-            danceStyleId: Number(danceStylesPerformance)
+            danceStyleId: Number(danceStylesPerformance),
+            userId: Number(userIdPerformance)
         }
         // console.log the object to see if it looks proper
 

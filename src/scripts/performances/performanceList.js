@@ -2,6 +2,7 @@ import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import performancesHandlers from "../performances/performancesHandlers"
 import domBuilders from "../domManager"
+import performanceHandlers from "../performances/performancesHandlers";
 
 const listPerformances = {
     listAllPerformances() {
@@ -66,7 +67,13 @@ const listPerformances = {
                 deleteButton.textContent = "Delete Performance"
                 listPerformancesFragment.appendChild(deleteButton)
 
-                deleteButton.addEventListener("click", performancesHandlers.deletePerformance)
+                deleteButton.addEventListener("click", () => {
+
+                    let deletePerformanceConfirm = confirm("Are you sure?")
+                    if (deletePerformanceConfirm === true) {
+                        performancesHandlers.deletePerformance()
+                    }
+                })
 
                 let eachPerformanceContainer = document.createElement("div")
                 eachPerformanceContainer.setAttribute("id", `eachPerformanceDiv_${performancesResponse.id}`)

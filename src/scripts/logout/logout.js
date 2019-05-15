@@ -1,4 +1,5 @@
 import loginHandlers from "../login/loginHandlers"
+import login from "../login/login"
 
 const logoutContainer = document.querySelector("#logout-container")
 const allContainer = document.querySelector("#all-container")
@@ -24,18 +25,27 @@ const logout = {
 
     logoutHandler() {
 
+        let returnToAppDiv = document.createElement("div")
+
         console.log("Logout Button Clicked")
 
+        // sessionStorage.clear()
+            // if (logoutButton.clicked === true) {
+            //     sessionStorage.removeItem("userId")
+            // while (allContainer.firstChild) {
+            //     allContainer.removeChild(allContainer.firstChild)
+            // }
+        // }
         
-            if (logoutButton.clicked === true) {
-                sessionStorage.removeItem("userId")
-            while (allContainer.firstChild) {
-                allContainer.removeChild(allContainer.firstChild)
-            }
-        }
-        
+        // console.log(sessionStorage.getItem("userId"))
 
-        console.log(sessionStorage.getItem("userId"))
+        // let returnToAppButton = document.createElement("button")
+        // returnToAppButton.setAttribute("id", "returnToApp")
+        // returnToAppButton.textContent = "Return to Taksimplicity"
+
+        // returnToAppButton.addEventListener("click", login.createLoginForm)
+        // returnToAppDiv.appendChild(returnToAppButton)
+        // logoutContainer.appendChild(returnToAppDiv)
     }
 
 }
