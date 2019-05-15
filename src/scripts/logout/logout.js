@@ -1,6 +1,7 @@
 import loginHandlers from "../login/loginHandlers"
 
 const logoutContainer = document.querySelector("#logout-container")
+const allContainer = document.querySelector("#all-container")
 
 const logout = {
 
@@ -14,6 +15,8 @@ const logout = {
 
         logoutButton.addEventListener("click", this.logoutHandler)
 
+        // FOR THE MORNING: why is removeItem removing the ID when the function hasn't even been called yet? Does it HAVE to be in an IF statement? 
+
         logoutButtonDiv.appendChild(logoutButton)
         logoutContainer.appendChild(logoutButtonDiv)
 
@@ -23,11 +26,16 @@ const logout = {
 
         console.log("Logout Button Clicked")
 
-        while ()
+        
+            if (logoutButton.clicked === true) {
+                sessionStorage.removeItem("userId")
+            while (allContainer.firstChild) {
+                allContainer.removeChild(allContainer.firstChild)
+            }
+        }
+        
 
-        let logoutSession = sessionStorage.removeItem("userId")
-
-
+        console.log(sessionStorage.getItem("userId"))
     }
 
 }
