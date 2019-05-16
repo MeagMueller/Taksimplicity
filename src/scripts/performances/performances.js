@@ -73,6 +73,25 @@ const performances = {
         // newPerformanceTroupeYesCheckbox.setAttribute("id", "troupePerformance")
         // newPerformanceFragment.appendChild(newPerformanceTroupeYesCheckbox)
 
+        let propsPerformanceLabel = document.createElement("label")
+        propsPerformanceLabel.textContent = "Prop? "
+        newPerformanceFragment.appendChild(propsPerformanceLabel)
+
+        let propsPerformanceDropDown = document.createElement("select")
+        propsPerformanceDropDown.setAttribute("id", "propsPerformanceDropDown")
+
+        fetchCalls.getAllProps().then(propsResponse => {
+            propsResponse.forEach(prop => {
+                let propsPerformanceOption = document.createElement("option")
+                propsPerformanceOption.textContent = prop.name
+                propsPerformanceOption.value = prop.id
+
+                propsPerformanceDropDown.appendChild(propsPerformanceOption)
+            })
+        })
+
+        newPerformanceFragment.appendChild(propsPerformanceDropDown)
+
         let danceStylesPerformanceLabel = document.createElement("label")
         danceStylesPerformanceLabel.textContent = "Dance Style? "
         newPerformanceFragment.appendChild(danceStylesPerformanceLabel)

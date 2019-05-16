@@ -17,14 +17,14 @@ const fetchCalls = {
 
         let userIdAllPerf = sessionStorage.getItem("userId")
 
-        return fetch(`${url}/performances?_expand=danceStyle&userId=${userIdAllPerf}`).then(response => response.json())
+        return fetch(`${url}/performances?_expand=danceStyle&_expand=prop&userId=${userIdAllPerf}`).then(response => response.json())
     },
 
     getSinglePerformance(singlePerformanceId) {
 
         let userIdSinglePerf = sessionStorage.getItem("userId")
 
-        return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle&userId=${userIdSinglePerf}`).then((response => response.json())
+        return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle&_expand=prop&userId=${userIdSinglePerf}`).then((response => response.json())
         )
     },
 

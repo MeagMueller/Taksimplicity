@@ -43,11 +43,15 @@ const listPerformances = {
                 let performancesDanceStyles = document.createElement("p")
                 performancesDanceStyles.textContent = performancesResponse.danceStyle.name
 
+                let performanceProps = document.createElement("p")
+                performanceProps.textContent = performancesResponse.prop.name
+
                 let paidPerformance = performancesResponse.paid
 
                 listPerformancesFragment.appendChild(performancesResponseName)
                 listPerformancesFragment.appendChild(performancesResponseLocation)
                 listPerformancesFragment.appendChild(performancesResponseDate)
+                listPerformancesFragment.appendChild(performanceProps)
                 listPerformancesFragment.appendChild(performancesDanceStyles)
 
                 if (paidPerformance === true) {
