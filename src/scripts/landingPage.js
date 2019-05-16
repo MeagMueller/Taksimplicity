@@ -38,7 +38,6 @@ const landingPage = {
 
         landingPageContainer.appendChild(landingPageLoginDiv)
 
-        
         }
     }
 
