@@ -45,7 +45,12 @@ const listProps = {
                 propsDeleteButton.textContent = "Delete Prop"
                 listPropsFragment.appendChild(propsDeleteButton)
 
-                propsDeleteButton.addEventListener("click", propsHandlers.deletePropHandler)
+                propsDeleteButton.addEventListener("click", () => {
+                    let deletePropConfirm = confirm("Are you sure?")
+                    if (deletePropConfirm === true) {
+                        propsHandlers.deletePropHandler()
+                    }
+                })
 
                 let eachPropContainer = document.createElement("div")
                 eachPropContainer.setAttribute("id", `eachPropDiv_${propsResponse.id}`)

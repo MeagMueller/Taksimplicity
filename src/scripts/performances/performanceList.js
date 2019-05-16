@@ -1,8 +1,6 @@
 import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import performancesHandlers from "../performances/performancesHandlers"
-import domBuilders from "../domManager"
-import performanceHandlers from "../performances/performancesHandlers";
 
 const listPerformances = {
     listAllPerformances() {
@@ -44,7 +42,10 @@ const listPerformances = {
                 performancesDanceStyles.textContent = performancesResponse.danceStyle.name
 
                 let performanceProps = document.createElement("p")
+
+                if (performancesResponse.prop.name !== "None") {
                 performanceProps.textContent = performancesResponse.prop.name
+                }
 
                 let paidPerformance = performancesResponse.paid
 

@@ -1,7 +1,6 @@
 import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import listPerformances from "../performances/performanceList"
-import elementBuilders from "../domManager"
 
 const performanceHandlers = {
     saveNewPerformance() {
