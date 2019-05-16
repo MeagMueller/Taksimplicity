@@ -25,15 +25,19 @@ const listProps = {
             propsDiv.appendChild(createNewPropButtonListed)
 
             propsResponse.forEach((propsResponse) => {
-                let propsResponseName = document.createElement("h2")
-                propsResponseName.textContent = propsResponse.name
 
-                let propsResponseDanceStyles = document.createElement("p")
-                propsResponseDanceStyles.textContent = propsResponse.danceStyle.name
+                if (propsResponse.name !== "None") {
+                    let propsResponseName = document.createElement("h2")
+                    propsResponseName.textContent = propsResponse.name 
 
-                listPropsFragment.appendChild(propsResponseName)
-                listPropsFragment.appendChild(propsResponseDanceStyles)
+                    let propsResponseDanceStyles = document.createElement("p")
+                    propsResponseDanceStyles.textContent = propsResponse.danceStyle.name
 
+                    listPropsFragment.appendChild(propsResponseName)
+                    listPropsFragment.appendChild(propsResponseDanceStyles)
+
+                }
+                
                 let propsEditButton = document.createElement("button")
                 propsEditButton.setAttribute("id", `propEditButton_${propsResponse.id}`)
                 propsEditButton.textContent = "Edit Prop"

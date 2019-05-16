@@ -64,14 +64,18 @@ const performances = {
         newPerformancePaidYesCheckbox.setAttribute("id", "paid")
         newPerformanceFragment.appendChild(newPerformancePaidYesCheckbox)
 
-        // let newPerformanceTroupeYesLabel = document.createElement("label")
-        // newPerformanceTroupeYesLabel.textContent = "Yes "
-        // newPerformanceFragment.appendChild(newPerformanceTroupeYesLabel)
+        let newPerformanceTroupeLabel = document.createElement("label")
+        newPerformanceTroupeLabel.textContent = "Troupe Performance? "
+        newPerformanceFragment.appendChild(newPerformanceTroupeLabel)
 
-        // let newPerformanceTroupeYesCheckbox = document.createElement("input")
-        // newPerformanceTroupeYesCheckbox.setAttribute("type", "checkbox")
-        // newPerformanceTroupeYesCheckbox.setAttribute("id", "troupePerformance")
-        // newPerformanceFragment.appendChild(newPerformanceTroupeYesCheckbox)
+        let newPerformanceTroupeYesLabel = document.createElement("label")
+        newPerformanceTroupeYesLabel.textContent = "Yes "
+        newPerformanceFragment.appendChild(newPerformanceTroupeYesLabel)
+
+        let newPerformanceTroupeYesCheckbox = document.createElement("input")
+        newPerformanceTroupeYesCheckbox.setAttribute("type", "checkbox")
+        newPerformanceTroupeYesCheckbox.setAttribute("id", "troupePerformance")
+        newPerformanceFragment.appendChild(newPerformanceTroupeYesCheckbox)
 
         let propsPerformanceLabel = document.createElement("label")
         propsPerformanceLabel.textContent = "Prop? "
@@ -172,6 +176,34 @@ const performances = {
         editPerformancePaidCheckbox.setAttribute("type", "checkbox")
         editPerformancePaidCheckbox.setAttribute("id", `editPerformancePaid_${editPerformancesId.id}`)
         editPerformanceFragment.appendChild(editPerformancePaidCheckbox)
+
+        let editTroupePerformanceLabel = document.createElement("label")
+        editTroupePerformanceLabel.textContent = "Troupe Performance? "
+        editPerformanceFragment.appendChild(editTroupePerformanceLabel)
+
+        let editTroupePerformanceCheckbox = document.createElement("input")
+        editTroupePerformanceCheckbox.setAttribute("type", "checkbox")
+        editTroupePerformanceCheckbox.setAttribute("id", `editTroupePerformance_${editPerformancesId.id}`)
+        editPerformanceFragment.appendChild(editTroupePerformanceCheckbox)
+
+        let editPropsDropDownLabel = document.createElement("label")
+        editPropsDropDownLabel.textContent = "Prop? "
+        editPerformanceFragment.appendChild(editPropsDropDownLabel)
+
+        let editPropsDropDown = document.createElement("select")
+        editPropsDropDown.setAttribute("id", `editProps_${editPerformancesId.id}`)
+
+        fetchCalls.getAllProps().then(editPropsResponse => {
+            editPropsResponse.forEach(editProps => {
+                let editPropsOption = document.createElement("option")
+                editPropsOption.textContent = editProps.name
+                editPropsOption.value = editProps.id
+
+                editPropsDropDown.appendChild(editPropsOption)
+            })
+        })
+
+        editPerformanceFragment.appendChild(editPropsDropDown)
 
         let editDanceStylesDropdown = document.createElement("select")
         editDanceStylesDropdown.setAttribute("id", `editDanceStyles_${editPerformancesId.id}`)

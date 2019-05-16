@@ -3,7 +3,10 @@ import login from "../login/login"
 import landingPage from "../landingPage";
 
 const logoutContainer = document.querySelector("#logout-container")
+const performancesDisplay = document.querySelector("#display-container")
+const propsDisplay = document.querySelector("#display-props")
 const allContainer = document.querySelector("#all-container")
+const returnToAppContainer = document.querySelector("#return-container")
 
 const logout = {
 
@@ -19,8 +22,14 @@ const logout = {
             let logoutConfirm = confirm("Are you sure you want to log out?")
             if (logoutConfirm === true) {
                 this.logoutHandler()
-                while (allContainer.firstChild) {
-                    allContainer.removeChild(allContainer.firstChild)
+                while (performancesDisplay.firstChild) {
+                    performancesDisplay.removeChild(performancesDisplay.firstChild)
+                while (propsDisplay.firstChild) {
+                    propsDisplay.removeChild(propsDisplay.firstChild)
+                }
+                while (logoutContainer.firstChild) {
+                    logoutContainer.removeChild(logoutContainer.firstChild)
+                }
                 }
             }
         })
@@ -28,7 +37,7 @@ const logout = {
         // FOR THE MORNING: why is removeItem removing the ID when the function hasn't even been called yet? Does it HAVE to be in an IF statement? 
 
         logoutButtonDiv.appendChild(logoutButton)
-        allContainer.appendChild(logoutButtonDiv)
+        logoutContainer.appendChild(logoutButtonDiv)
 
     },
 
@@ -41,7 +50,7 @@ const logout = {
 
         console.log("Logout Button Clicked")
 
-        // sessionStorage.clear()
+        sessionStorage.clear()
 
         let returnToAppButton = document.createElement("button")
         returnToAppButton.setAttribute("id", "returnToAppButtom")
@@ -51,13 +60,13 @@ const logout = {
 
         returnToAppButton.addEventListener("click", () => {
             landingPage.landingPageWithLogin()
-            while (logoutContainer.firstChild) {
-                logoutContainer.removeChild(logoutContainer.firstChild)
+            while (returnToAppContainer.firstChild) {
+                returnToAppContainer.removeChild(returnToAppContainer.firstChild)
             }
         })
 
         returnToAppDiv.appendChild(logoutContainerFragment)
-        logoutContainer.appendChild(returnToAppDiv)
+        returnToAppContainer.appendChild(returnToAppDiv)
     }
 
 }

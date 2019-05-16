@@ -11,6 +11,7 @@ const performanceHandlers = {
         let performanceLocation = document.querySelector("#newPerformanceLocationInput").value
         let performanceDate = document.querySelector("#newPerformanceDate").value
         let performancePaid = document.querySelector("#paid").checked
+        let performanceTroupe = document.querySelector("#troupePerformance").checked
         let danceStylesPerformance = document.querySelector("#danceStylesDropDown").value
         let propsPerformance = document.querySelector("#propsPerformanceDropDown").value
         let userIdPerformance = sessionStorage.getItem("userId")
@@ -23,6 +24,7 @@ const performanceHandlers = {
             location: performanceLocation,
             date: performanceDate,
             paid: performancePaid,
+            troupePerformance: performanceTroupe.checked,
             propId: Number(propsPerformance),
             danceStyleId: Number(danceStylesPerformance),
             userId: Number(userIdPerformance)
@@ -86,7 +88,10 @@ const performanceHandlers = {
         let editedPerformanceLocation = document.querySelector(`#editPerformanceLocation_${updatePerformanceId}`)
         let editedPerformanceDate = document.querySelector(`#editPerformanceDate_${updatePerformanceId}`)
         let editedPerformancePaid = document.querySelector(`#editPerformancePaid_${updatePerformanceId}`)
+        let editedTroupePerformance = document.querySelector(`#editTroupePerformance_${updatePerformanceId}`)
+        let editedProps = document.querySelector(`#editProps_${updatePerformanceId}`)
         let editedPerformanceDanceStyle = document.querySelector(`#editDanceStyles_${updatePerformanceId}`)
+        let editedUserId = sessionStorage.getItem("userId")
 
         console.log(editedPerformanceName.value, editedPerformanceLocation.value, editedPerformanceDate.value)
 
@@ -97,6 +102,9 @@ const performanceHandlers = {
             location: editedPerformanceLocation.value, 
             date: editedPerformanceDate.value,
             paid: editedPerformancePaid.checked,
+            troupePerformance: editedTroupePerformance.checked,
+            propId: Number(editedProps.value),
+            userId: Number(editedUserId),
             danceStyleId: Number(editedPerformanceDanceStyle.value)
         }
 

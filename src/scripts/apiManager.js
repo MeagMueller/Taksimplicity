@@ -17,6 +17,8 @@ const fetchCalls = {
 
         let userIdAllPerf = sessionStorage.getItem("userId")
 
+        console.log(userIdAllPerf)
+
         return fetch(`${url}/performances?_expand=danceStyle&_expand=prop&userId=${userIdAllPerf}`).then(response => response.json())
     },
 
