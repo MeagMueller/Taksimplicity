@@ -7,6 +7,8 @@ const login = {
 
     createLoginForm() {
 
+        // creating login form
+
         let loginDiv = document.createElement("div")
 
         let loginFragment = document.createDocumentFragment()

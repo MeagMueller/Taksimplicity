@@ -13,20 +13,27 @@ const loginHandlers = {
     loginToTaksimplicity() {
         console.log("Login clicked")
 
+        // get input values
+
         let usernameInput = document.querySelector("#loginUsernameInput").value
         let passwordInput = document.querySelector("#loginPasswordInput").value
 
         console.log(usernameInput, passwordInput)
 
+        // fetch call to get user for login
+
         fetchCalls.getUsers().then((eachUser => {
             console.log(eachUser)
+
+            // looping through each user and lower casing name and password in order to keep it from being case sensitive
 
             let userLogin = eachUser.find(user => {
                 return usernameInput.toLowerCase() === user.username.toLowerCase() && passwordInput.toLowerCase() === user.password.toLowerCase()
             })
             console.log(userLogin)
 
-                
+                // setting up login credentials
+
                 if (usernameInput === "") {
                     alert("Please enter a username!")
                 } else if (passwordInput === "") {
@@ -38,9 +45,13 @@ const loginHandlers = {
                 } else if (userLogin !== undefined) {
                     sessionStorage.setItem("userId", userLogin.id)
 
+                    // clearing container
+
                     while(loginContainer.firstChild) {
                         loginContainer.removeChild(loginContainer.firstChild)
                     }
+
+                    // calling methods
 
                     performances.createNewPerformanceButton()
                     props.createNewPropButton()

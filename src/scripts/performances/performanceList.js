@@ -61,6 +61,8 @@ const listPerformances = {
                     listPerformancesFragment.appendChild(performancesPaid)
                 }
 
+                // creating edit button
+
                 let editButton = document.createElement("button")
                 editButton.setAttribute("id", `editButton_${performancesResponse.id}`)
                 editButton.textContent = "Edit Performance"

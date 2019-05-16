@@ -1,12 +1,4 @@
-import performances from "./performances/performances"
-import performanceList from "./performances/performanceList"
-import performanceHandlers from "./performances/performancesHandlers"
-import props from "./props/props"
-import propsList from "./props/propsList"
-import propsHandlers from "./props/propsHandlers"
 import login from "./login/login"
-import loginHandlers from "./login/loginHandlers"
-import logout from "./logout/logout"
 
 const allContainer = document.querySelector("#all-container")
 const landingPageContainer = document.querySelector("#landing-page")
@@ -14,6 +6,8 @@ const landingPageContainer = document.querySelector("#landing-page")
 const landingPage = {
 
     landingPageWithLogin() {
+
+        // creating landing page form
 
         let landingPageLoginDiv = document.createElement("div")
         let landingPageLoginFragment = document.createDocumentFragment()
@@ -30,7 +24,11 @@ const landingPage = {
         landingPageLoginFragment.appendChild(landingPageLoginButton)
 
         landingPageLoginButton.addEventListener("click", () => {
+
+            // calling login form
             login.createLoginForm()
+
+            // clearing container
             while (landingPageContainer.firstChild) {
                 landingPageContainer.removeChild(landingPageContainer.firstChild)
             }
