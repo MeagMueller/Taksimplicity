@@ -7,6 +7,8 @@ const login = {
 
     createLoginForm() {
 
+        // creating login form
+
         let loginDiv = document.createElement("div")
 
         let loginFragment = document.createDocumentFragment()
@@ -25,6 +27,7 @@ const login = {
         loginFragment.appendChild(loginPasswordLabel)
 
         let loginPasswordInput = document.createElement("input")
+        loginPasswordInput.setAttribute("type", "password")
         loginPasswordInput.setAttribute("id", "loginPasswordInput")
         loginPasswordInput.placeholder = "Password"
         loginFragment.appendChild(loginPasswordInput)

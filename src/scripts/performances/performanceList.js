@@ -1,7 +1,6 @@
 import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import performancesHandlers from "../performances/performancesHandlers"
-import domBuilders from "../domManager"
 
 const listPerformances = {
     listAllPerformances() {
@@ -42,11 +41,18 @@ const listPerformances = {
                 let performancesDanceStyles = document.createElement("p")
                 performancesDanceStyles.textContent = performancesResponse.danceStyle.name
 
+                let performanceProps = document.createElement("p")
+
+                if (performancesResponse.prop.name !== "None") {
+                performanceProps.textContent = performancesResponse.prop.name
+                }
+
                 let paidPerformance = performancesResponse.paid
 
                 listPerformancesFragment.appendChild(performancesResponseName)
                 listPerformancesFragment.appendChild(performancesResponseLocation)
                 listPerformancesFragment.appendChild(performancesResponseDate)
+                listPerformancesFragment.appendChild(performanceProps)
                 listPerformancesFragment.appendChild(performancesDanceStyles)
 
                 if (paidPerformance === true) {
@@ -54,6 +60,8 @@ const listPerformances = {
                     performancesPaid.textContent = "Paid Performance"
                     listPerformancesFragment.appendChild(performancesPaid)
                 }
+
+                // creating edit button
 
                 let editButton = document.createElement("button")
                 editButton.setAttribute("id", `editButton_${performancesResponse.id}`)
@@ -66,7 +74,13 @@ const listPerformances = {
                 deleteButton.textContent = "Delete Performance"
                 listPerformancesFragment.appendChild(deleteButton)
 
-                deleteButton.addEventListener("click", performancesHandlers.deletePerformance)
+                deleteButton.addEventListener("click", () => {
+
+                    let deletePerformanceConfirm = confirm("Are you sure?")
+                    if (deletePerformanceConfirm === true) {
+                        performancesHandlers.deletePerformance()
+                    }
+                })
 
                 let eachPerformanceContainer = document.createElement("div")
                 eachPerformanceContainer.setAttribute("id", `eachPerformanceDiv_${performancesResponse.id}`)

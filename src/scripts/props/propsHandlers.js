@@ -7,12 +7,14 @@ const propsHandlers = {
     saveNewProp() {
         let propName = document.querySelector("#newPropInput").value
         let propDanceStyles = document.querySelector("#newPropDanceStyleDropDown").value
+        let propUserId = sessionStorage.getItem("userId")
 
         console.log("Inputs", propName, propDanceStyles)
 
         const newProp = {
             name: propName,
-            danceStyleId: Number(propDanceStyles)
+            danceStyleId: Number(propDanceStyles),
+            userId: Number(propUserId)
         }
 
         console.log(newProp)

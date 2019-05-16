@@ -1,7 +1,6 @@
 import fetchCalls from "../apiManager"
 import performances from "../performances/performances"
 import listPerformances from "../performances/performanceList"
-import elementBuilders from "../domManager"
 
 const performanceHandlers = {
     saveNewPerformance() {
@@ -13,6 +12,8 @@ const performanceHandlers = {
         let performanceDate = document.querySelector("#newPerformanceDate").value
         let performancePaid = document.querySelector("#paid").checked
         let danceStylesPerformance = document.querySelector("#danceStylesDropDown").value
+        let propsPerformance = document.querySelector("#propsPerformanceDropDown").value
+        let userIdPerformance = sessionStorage.getItem("userId")
         // pull values in input fields to check console log
 
         console.log("Inputs", performanceName, performanceLocation, performanceDate, performancePaid, danceStylesPerformance)
@@ -22,7 +23,9 @@ const performanceHandlers = {
             location: performanceLocation,
             date: performanceDate,
             paid: performancePaid,
-            danceStyleId: Number(danceStylesPerformance)
+            propId: Number(propsPerformance),
+            danceStyleId: Number(danceStylesPerformance),
+            userId: Number(userIdPerformance)
         }
         // console.log the object to see if it looks proper
 

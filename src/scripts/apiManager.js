@@ -14,16 +14,25 @@ const fetchCalls = {
     // Performance Fetch Calls
 
     getAllPerformances() {
-        return fetch(`${url}/performances?_expand=danceStyle`).then(response => response.json())
+
+        let userIdAllPerf = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/performances?_expand=danceStyle&_expand=prop&userId=${userIdAllPerf}`).then(response => response.json())
     },
 
     getSinglePerformance(singlePerformanceId) {
-        return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle`).then((response => response.json())
+
+        let userIdSinglePerf = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/performances/${singlePerformanceId}?_expand=danceStyle&_expand=prop&userId=${userIdSinglePerf}`).then((response => response.json())
         )
     },
 
     postPerformances(newPerformance) {
-        return fetch(`${url}/performances`, {
+
+        let userIdPostPerf = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/performances?userId=${userIdPostPerf}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -34,13 +43,19 @@ const fetchCalls = {
     },
 
     deletePerformances(performanceId) {
-        return fetch(`${url}/performances/${performanceId}`, {
+
+        let userIdDelPerf = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/performances/${performanceId}?userId=${userIdDelPerf}`, {
             method: "DELETE"
         })
     },
 
     editPerformances(updatePerformanceId, updatedPerformance) {
-        return fetch(`${url}/performances/${updatePerformanceId}`, {
+
+        let userIdEditPerf = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/performances/${updatePerformanceId}?userId=${userIdEditPerf}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
@@ -52,15 +67,24 @@ const fetchCalls = {
     // Props fetch calls
 
     getAllProps() {
-        return fetch(`${url}/props?_expand=danceStyle`).then(response => response.json())
+
+        let userIdAllProps = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/props?_expand=danceStyle&userId=${userIdAllProps}`).then(response => response.json())
     },
 
     getSingleProp(singlePropId) {
-        return fetch(`${url}/props/${singlePropId}?_expand=danceStyle`).then(response => response.json())
+
+        let userIdSingleProp = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/props/${singlePropId}?_expand=danceStyle&userId=${userIdSingleProp}`).then(response => response.json())
     },
 
     postProps(newProps) {
-        return fetch(`${url}/props`, {
+
+        let userIdPostProp = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/props?userId=${userIdPostProp}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -70,7 +94,10 @@ const fetchCalls = {
     },
 
     editProps(updatePropsId, updatedProp) {
-        return fetch(`${url}/props/${updatePropsId}`, {
+
+        let userIdEditProp = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/props/${updatePropsId}?userId=${userIdEditProp}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
@@ -80,7 +107,10 @@ const fetchCalls = {
     },
 
     deleteProps(propsDeleteId) {
-        return fetch(`${url}/props/${propsDeleteId}`, {
+
+        let userIdDelProp = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/props/${propsDeleteId}?userId=${userIdDelProp}`, {
             method: "DELETE"
         })
     },
@@ -88,7 +118,10 @@ const fetchCalls = {
     // Dance styles fetch calls
 
     getAllDanceStyles() {
-        return fetch(`${url}/danceStyles`).then(response => response.json())
+
+        let userIdAllDance = sessionStorage.getItem("userId")
+
+        return fetch(`${url}/danceStyles?userId=${userIdAllDance}`).then(response => response.json())
     }
 }
 
