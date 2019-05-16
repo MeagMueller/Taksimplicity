@@ -27,6 +27,7 @@ const login = {
         loginFragment.appendChild(loginPasswordLabel)
 
         let loginPasswordInput = document.createElement("input")
+        loginPasswordInput.setAttribute("type", "password")
         loginPasswordInput.setAttribute("id", "loginPasswordInput")
         loginPasswordInput.placeholder = "Password"
         loginFragment.appendChild(loginPasswordInput)
