@@ -25,7 +25,9 @@ const loginHandlers = {
         fetchCalls.getUsers().then((eachUser => {
             console.log(eachUser)
 
-            // looping through each user and lower casing name and password in order to keep it from being case sensitive
+            // eachUser returns users objects in an array
+
+            // the find loops through the array, sets the input to lower case and the username and password returned by the fetch call so that it isn't case sensitive and matches the information in the inputs to the correct information in the database, then returns the correct user information and stores it in the variable userLogin
 
             let userLogin = eachUser.find(user => {
                 return usernameInput.toLowerCase() === user.username.toLowerCase() && passwordInput.toLowerCase() === user.password.toLowerCase()
