@@ -59,6 +59,9 @@ const props = {
     },
 
     editProp(editPropsId) {
+
+        console.log(editPropsId)
+
         let editPropFragment = document.createDocumentFragment()
 
         let editPropNameLabel = document.createElement("label")

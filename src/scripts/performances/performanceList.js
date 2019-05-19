@@ -49,6 +49,12 @@ const listPerformances = {
 
                 let paidPerformance = performancesResponse.paid
 
+                let troupePerformance = performancesResponse.troupePerformance
+
+                if (troupePerformance === true) {
+                    performancesResponseName.style.color = "blue"
+                }
+
                 listPerformancesFragment.appendChild(performancesResponseName)
                 listPerformancesFragment.appendChild(performancesResponseLocation)
                 listPerformancesFragment.appendChild(performancesResponseDate)
