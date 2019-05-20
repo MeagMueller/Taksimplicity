@@ -17,6 +17,7 @@ const listPerformances = {
             performanceDiv.setAttribute("id", "performanceDiv")
 
             let createNewPerformanceButtonListed = document.createElement("button")
+            createNewPerformanceButtonListed.className = "btn btn-dark createNewPerfBtnList"
             createNewPerformanceButtonListed.textContent = "Add New Performance"
             createNewPerformanceButtonListed.addEventListener("click", () => {
                 performances.createNewPerformance()
@@ -30,18 +31,23 @@ const listPerformances = {
                 // creating HTML displays for each performance that comes back from the database
                 
                 let performancesResponseName = document.createElement("h2")
+                performancesResponseName.className = "performanceHeader"
                 performancesResponseName.textContent = performancesResponse.name
 
                 let performancesResponseLocation = document.createElement("p")
+                performancesResponseLocation.className = "performancesP"
                 performancesResponseLocation.textContent = performancesResponse.location
 
                 let performancesResponseDate = document.createElement("p")
+                performancesResponseDate.className = "performancesP"
                 performancesResponseDate.textContent = performancesResponse.date
 
                 let performancesDanceStyles = document.createElement("p")
+                performancesDanceStyles.className = "performancesP"
                 performancesDanceStyles.textContent = performancesResponse.danceStyle.name
 
                 let performanceProps = document.createElement("p")
+                performanceProps.className = "performancesP"
 
                 if (performancesResponse.prop.name !== "None") {
                 performanceProps.textContent = performancesResponse.prop.name
@@ -52,7 +58,7 @@ const listPerformances = {
                 let troupePerformance = performancesResponse.troupePerformance
 
                 if (troupePerformance === true) {
-                    performancesResponseName.style.color = "blue"
+                    performancesResponseName.style.color = "#6166DE"
                 }
 
                 listPerformancesFragment.appendChild(performancesResponseName)
@@ -70,12 +76,14 @@ const listPerformances = {
                 // creating edit button
 
                 let editButton = document.createElement("button")
+                editButton.className = "btn btn-dark perfEditBtn"
                 editButton.setAttribute("id", `editButton_${performancesResponse.id}`)
                 editButton.textContent = "Edit Performance"
                 editButton.addEventListener("click", performancesHandlers.editPerformanceHandler)
                 listPerformancesFragment.appendChild(editButton)
 
                 let deleteButton = document.createElement("button")
+                deleteButton.className = "btn btn-dark perfDelBtn"
                 deleteButton.setAttribute("id", `deleteButton_${performancesResponse.id}`)
                 deleteButton.textContent = "Delete Performance"
                 listPerformancesFragment.appendChild(deleteButton)
@@ -89,6 +97,7 @@ const listPerformances = {
                 })
 
                 let eachPerformanceContainer = document.createElement("div")
+                eachPerformanceContainer.className = "card card-body"
                 eachPerformanceContainer.setAttribute("id", `eachPerformanceDiv_${performancesResponse.id}`)
                 eachPerformanceContainer.appendChild(listPerformancesFragment)
 

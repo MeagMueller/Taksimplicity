@@ -2,6 +2,7 @@ import fetchCalls from "../apiManager"
 import loginHandlers from "./loginHandlers"
 
 let loginContainer = document.querySelector("#login-container")
+loginContainer.classList = "form-group"
 
 const login = {
 
@@ -10,6 +11,7 @@ const login = {
         // creating login form
 
         let loginDiv = document.createElement("div")
+        loginDiv.className = "loginDiv"
 
         let loginFragment = document.createDocumentFragment()
 
@@ -19,6 +21,7 @@ const login = {
 
         let loginUsernameInput = document.createElement("input")
         loginUsernameInput.setAttribute("id", "loginUsernameInput")
+        loginUsernameInput.setAttribute("class", "form-control")
         loginUsernameInput.placeholder = "Username"
         loginFragment.appendChild(loginUsernameInput)
 
@@ -28,6 +31,7 @@ const login = {
 
         let loginPasswordInput = document.createElement("input")
         loginPasswordInput.setAttribute("type", "password")
+        loginPasswordInput.setAttribute("class", "form-control")
         loginPasswordInput.setAttribute("id", "loginPasswordInput")
         loginPasswordInput.placeholder = "Password"
         loginFragment.appendChild(loginPasswordInput)
@@ -35,6 +39,7 @@ const login = {
         let loginButton = document.createElement("button")
         loginButton.textContent = "Login"
         loginButton.setAttribute("id", "loginButton")
+        loginButton.classList = "btn btn-dark loginButton"
         loginButton.addEventListener("click", loginHandlers.loginToTaksimplicity)
         loginFragment.appendChild(loginButton)
 

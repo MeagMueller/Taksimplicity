@@ -2,11 +2,13 @@ import fetchCalls from "../apiManager"
 import propsHandlers from "../props/propsHandlers"
 
 const displayPropsContainer = document.querySelector("#display-props")
+displayPropsContainer.className = "form-group"
 
 const props = {
 
     createNewPropButton() {
         let createNewPropButton = document.createElement("button")
+        createNewPropButton.className = "btn btn-dark createNewPropBtn"
         createNewPropButton.setAttribute("id", "createNewPropButton")
         createNewPropButton.textContent = "Add New Prop"
 
@@ -25,6 +27,7 @@ const props = {
         propsFragment.appendChild(newPropLabel)
 
         let newPropInput = document.createElement("input")
+        newPropInput.className = "form-control"
         newPropInput.setAttribute("id", "newPropInput")
         newPropInput.placeholder = "Name"
         propsFragment.appendChild(newPropInput)
@@ -49,13 +52,14 @@ const props = {
         propsFragment.appendChild(newPropDanceStyleDropDown)
 
         let saveNewPropButton = document.createElement("button")
+        saveNewPropButton.className = "btn btn-dark saveNewPropBtn"
         saveNewPropButton.setAttribute("id", "saveNewPropButton")
         saveNewPropButton.textContent = "Save Prop"
         propsFragment.appendChild(saveNewPropButton)
 
         saveNewPropButton.addEventListener("click", propsHandlers.saveNewProp)
 
-        displayPropsContainer.appendChild(propsFragment)
+        displayPropsContainer.prepend(propsFragment)
     },
 
     editProp(editPropsId) {
@@ -89,6 +93,7 @@ const props = {
         editPropFragment.appendChild(editPropDanceStyleDropDown)
 
         let confirmPropEditButton = document.createElement("button")
+        confirmPropEditButton.className = "btn btn-dark confirmPropEditBtn"
         confirmPropEditButton.textContent = "Save Changes"
         confirmPropEditButton.setAttribute("id", `confirmPropEditButton_${editPropsId.id}`)
         confirmPropEditButton.addEventListener("click", propsHandlers.updatePropsHandler)

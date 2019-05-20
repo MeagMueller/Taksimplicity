@@ -10,9 +10,11 @@ const landingPage = {
         // creating landing page form
 
         let landingPageLoginDiv = document.createElement("div")
+        landingPageLoginDiv.className = "landingPageDiv"
         let landingPageLoginFragment = document.createDocumentFragment()
 
         let greeting = document.createElement("h1")
+        greeting.className = "welcomeHeader"
         greeting.textContent = "Welcome to Taksimplicity!"
         greeting.setAttribute("id", "greetingHeader")
 
@@ -21,6 +23,7 @@ const landingPage = {
         let landingPageLoginButton = document.createElement("button")
         landingPageLoginButton.setAttribute("id", "landingPageLoginButton")
         landingPageLoginButton.textContent = "Click to Login!"
+        landingPageLoginButton.className = "btn btn-dark landingPageLoginButton"
         landingPageLoginFragment.appendChild(landingPageLoginButton)
 
         landingPageLoginButton.addEventListener("click", () => {

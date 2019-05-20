@@ -1,0 +1,147 @@
+.loginDiv {
+    margin: 10%;
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 25px
+}
+
+.body {
+    background-color: #BF6565;
+    opacity: 80%
+}
+
+.landingPageDiv {
+    margin: 10%;
+}
+
+.welcomeHeader {
+    display: flex;
+    text-align: center;
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 50px
+}
+
+.landingPageLoginButton {
+    margin-left: 22%;
+    font-family: 'Oleo Script', cursive;
+    font-size: 25px
+}
+
+.loginButton {
+    font-family: 'Oleo Script', cursive;
+}
+
+.logoutButton {
+    font-family: 'Oleo Script', cursive;
+}
+
+#logout-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5%
+}
+
+.returnAppBtn {
+    font-family: 'Oleo Script', cursive;
+
+}
+
+.returnAppDiv {
+    display: block;
+    max-width: 300px;
+    margin-left: 30%
+}
+
+#display-container {
+    font-family: 'Macondo Swash Caps', cursive;
+    margin: 5%
+}
+
+.createNewPerfBtnList {
+    font-family: 'Oleo Script', cursive;
+}
+
+.confirmEditBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.performanceHeader {
+    font-family: 'Macondo Swash Caps', cursive;
+    text-shadow: 1px 1px 2px #050969;
+    font-size: 50px
+}
+
+.performancesP {
+    font-family: 'Oleo Script', cursive;
+    font-size: 20px
+}
+
+.perfEditBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.perfDelBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.card-body {
+    display: block;
+    max-width: 500px;
+    margin: 2%;
+    background-color: #D5C7C7
+}
+
+.saveNewPerfBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.form-group {
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.newPerfLabels {
+    font-size: 20px
+}
+
+.createNewPropBtnList {
+    font-family: 'Oleo Script', cursive;
+}
+
+.propsEditBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.propsDelBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.saveNewPropBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.confirmPropEditBtn {
+    font-family: 'Oleo Script', cursive;
+}
+
+.createNewPropBtn {
+    max-width: 30%;
+    font-family: 'Oleo Script', cursive;
+}
+
+.propsName {
+    font-family: 'Macondo Swash Caps', cursive;
+}
+
+.propsP {
+    font-family: 'Oleo Script', cursive;
+}
+
+#display-props {
+    font-family: 'Macondo Swash Caps', cursive;
+    margin: 5%
+}
+
+.propsListBtn {
+    font-family: 'Oleo Script', cursive
+}

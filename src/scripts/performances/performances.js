@@ -2,13 +2,15 @@ import fetchCalls from "../apiManager"
 import performanceHandlers from "../performances/performancesHandlers"
 
 const displayContainer = document.querySelector("#display-container")
+displayContainer.className = "form-group"
 const editDisplay = document.querySelector("#edit-display")
 
 const performances = {
 
     createNewPerformanceButton() {
         let createNewPerformanceButton = document.createElement("button")
-        createNewPerformanceButton.setAttribute("id", "createNewPerformanceButton")
+        createNewPerformanceButton.className = "btn btn-dark"
+        createNewPerformanceButton.id = "createNewPerformanceButton"
         createNewPerformanceButton.textContent = "Add New Performance"
 
         createNewPerformanceButton.addEventListener("click", () => {
@@ -24,38 +26,46 @@ const performances = {
         let newPerformanceFragment = document.createDocumentFragment()
 
         let newPerformanceLabel = document.createElement("label")
+        newPerformanceLabel.className = "newPerfLabels"
         newPerformanceLabel.textContent = "New Performance: "
         newPerformanceFragment.appendChild(newPerformanceLabel)
 
         let newPerformanceInput = document.createElement("input")
+        newPerformanceInput.className = "form-control"
         newPerformanceInput.setAttribute("id", "newPerformanceInput")
         newPerformanceInput.placeholder = "Name"
         newPerformanceFragment.appendChild(newPerformanceInput)
 
         let newPerformanceLocationLabel = document.createElement("label")
+        newPerformanceLocationLabel.className = "newPerfLabels"
         newPerformanceLocationLabel.textContent = "Location: "
         newPerformanceFragment.appendChild(newPerformanceLocationLabel)
 
         let newPerformanceLocationInput = document.createElement("input")
+        newPerformanceLocationInput.className = "form-control"
         newPerformanceLocationInput.setAttribute("id", "newPerformanceLocationInput")
         newPerformanceLocationInput.placeholder = "Address"
         newPerformanceFragment.appendChild(newPerformanceLocationInput)
 
         let newPerformanceDateLabel = document.createElement("label")
+        newPerformanceDateLabel.className = "newPerfLabels"
         newPerformanceDateLabel.textContent = "Date: "
         newPerformanceFragment.appendChild(newPerformanceDateLabel)
 
         let newPerformanceDate = document.createElement("input")
+        newPerformanceDate.className = "form-control"
         newPerformanceDate.setAttribute("type", "date")
         newPerformanceDate.setAttribute("id", "newPerformanceDate")
         // newPerformanceDate.placeholder = "mm/dd/yyyy"
         newPerformanceFragment.appendChild(newPerformanceDate)
 
         let paidPerformanceLabel = document.createElement("label")
+        paidPerformanceLabel.className = "newPerfLabels"
         paidPerformanceLabel.textContent = "Paid? "
         newPerformanceFragment.appendChild(paidPerformanceLabel)
 
         let newPerformancePaidYesLabel = document.createElement("label")
+        newPerformancePaidYesLabel.className = "newPerfLabels"
         newPerformancePaidYesLabel.textContent = "Yes "
         newPerformanceFragment.appendChild(newPerformancePaidYesLabel)
 
@@ -65,10 +75,12 @@ const performances = {
         newPerformanceFragment.appendChild(newPerformancePaidYesCheckbox)
 
         let newPerformanceTroupeLabel = document.createElement("label")
+        newPerformanceTroupeLabel.className = "newPerfLabels"
         newPerformanceTroupeLabel.textContent = "Troupe Performance? "
         newPerformanceFragment.appendChild(newPerformanceTroupeLabel)
 
         let newPerformanceTroupeYesLabel = document.createElement("label")
+        newPerformanceTroupeYesLabel.className = "newPerfLabels"
         newPerformanceTroupeYesLabel.textContent = "Yes "
         newPerformanceFragment.appendChild(newPerformanceTroupeYesLabel)
 
@@ -78,6 +90,7 @@ const performances = {
         newPerformanceFragment.appendChild(newPerformanceTroupeYesCheckbox)
 
         let propsPerformanceLabel = document.createElement("label")
+        propsPerformanceLabel.className = "newPerfLabels"
         propsPerformanceLabel.textContent = "Prop? "
         newPerformanceFragment.appendChild(propsPerformanceLabel)
 
@@ -97,6 +110,7 @@ const performances = {
         newPerformanceFragment.appendChild(propsPerformanceDropDown)
 
         let danceStylesPerformanceLabel = document.createElement("label")
+        danceStylesPerformanceLabel.className = "newPerfLabels"
         danceStylesPerformanceLabel.textContent = "Dance Style? "
         newPerformanceFragment.appendChild(danceStylesPerformanceLabel)
 
@@ -120,13 +134,16 @@ const performances = {
         // creating save button
 
         let saveNewPerformanceButton = document.createElement("button")
+        saveNewPerformanceButton.className = "btn btn-dark saveNewPerfBtn"
         saveNewPerformanceButton.setAttribute("id", "saveNewPerformanceButton")
         saveNewPerformanceButton.textContent = "Save Performance"
         newPerformanceFragment.appendChild(saveNewPerformanceButton)
         // add save event handler
         saveNewPerformanceButton.addEventListener("click", performanceHandlers.saveNewPerformance)
 
-        displayContainer.appendChild(newPerformanceFragment)
+
+
+        displayContainer.prepend(newPerformanceFragment)
 
     },
 
@@ -224,6 +241,7 @@ const performances = {
 
         let confirmEditButton = document.createElement("button")
         confirmEditButton.textContent = "Save Changes"
+        confirmEditButton.className = "btn btn-dark confirmEditBtn"
         confirmEditButton.setAttribute("id", `confirmEditButton_${editPerformancesId.id}`)
         confirmEditButton.addEventListener("click", performanceHandlers.updatePerformanceHandler)
         editPerformanceFragment.appendChild(confirmEditButton)

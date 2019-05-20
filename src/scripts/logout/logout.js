@@ -13,8 +13,10 @@ const logout = {
     logoutButton() {
 
         let logoutButtonDiv = document.createElement("div")
+        logoutButtonDiv.className = "logoutButtonDiv"
 
         let logoutButton = document.createElement("button")
+        logoutButton.className = "btn btn-dark logoutButton"
         logoutButton.setAttribute("id", "logoutButton")
         logoutButton.textContent = "Logout"
 
@@ -46,6 +48,7 @@ const logout = {
         let logoutContainerFragment = document.createDocumentFragment()
 
         let returnToAppDiv = document.createElement("div")
+        returnToAppDiv.className = "returnAppDiv"
         
 
         console.log("Logout Button Clicked")
@@ -54,6 +57,7 @@ const logout = {
 
         let returnToAppButton = document.createElement("button")
         returnToAppButton.setAttribute("id", "returnToAppButtom")
+        returnToAppButton.className = "btn btn-dark returnAppBtn"
         returnToAppButton.textContent = "Return to Taksimplicity"
         logoutContainerFragment.appendChild(returnToAppButton)
 
